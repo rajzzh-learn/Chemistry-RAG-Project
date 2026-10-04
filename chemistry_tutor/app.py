@@ -29,6 +29,8 @@ st.caption("Powered by your NCERT notes, exemplar, and PYQs — 2027 Board Exam 
 with st.sidebar:
     current_provider = get_config("LLM_PROVIDER", "openai").lower()
     st.caption(f"🤖 **Active Provider**: `{current_provider.upper()}`")
+    REPO = "https://github.com/rajzzh-learn/Chemistry-RAG-Project/blob/main"
+
     st.header("🗂️ Chapters")
     st.markdown("""
 **Part 1 — Physical & Inorganic**
@@ -54,6 +56,97 @@ with st.sidebar:
 14. Biomolecules
 15. Polymers
 """)
+
+    st.divider()
+
+    # ── Part 3: Study Material Links ──────────────────────────────────────
+    st.header("📂 Study Material")
+
+    with st.expander("📖 Book — Part 1 (lech1dd)"):
+        st.markdown(f"""
+- [Chapter 1 — The Solid State]({REPO}/Book/lech1dd/lech101.pdf)
+- [Chapter 2 — Solutions]({REPO}/Book/lech1dd/lech102.pdf)
+- [Chapter 3 — Electrochemistry]({REPO}/Book/lech1dd/lech103.pdf)
+- [Chapter 4 — Chemical Kinetics]({REPO}/Book/lech1dd/lech104.pdf)
+- [Chapter 5 — Surface Chemistry]({REPO}/Book/lech1dd/lech105.pdf)
+- [Appendix 1]({REPO}/Book/lech1dd/lech1a1.pdf)
+- [Answers]({REPO}/Book/lech1dd/lech1an.pdf)
+- [Practice Sets]({REPO}/Book/lech1dd/lech1ps.pdf)
+""")
+
+    with st.expander("📖 Book — Part 2 (lech2dd)"):
+        st.markdown(f"""
+- [Chapter 6 — General Principles & Isolation of Elements]({REPO}/Book/lech2dd/lech201.pdf)
+- [Chapter 7 — The p-Block Elements]({REPO}/Book/lech2dd/lech202.pdf)
+- [Chapter 8 — The d and f Block Elements]({REPO}/Book/lech2dd/lech203.pdf)
+- [Chapter 9 — Coordination Compounds]({REPO}/Book/lech2dd/lech204.pdf)
+- [Chapter 10 — Haloalkanes and Haloarenes]({REPO}/Book/lech2dd/lech205.pdf)
+- [Answers]({REPO}/Book/lech2dd/lech2an.pdf)
+- [Practice Sets]({REPO}/Book/lech2dd/lech2ps.pdf)
+""")
+
+    with st.expander("🔬 Exemplar"):
+        st.markdown(f"""
+- [Ch 1 — The Solid State]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%201%20-%20The%20Solid%20State%20(Book%20Solutions).pdf)
+- [Ch 2 — Solutions]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%202%20-%20Solutions%20(Book%20Solutions).pdf)
+- [Ch 3 — Electrochemistry]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%203%20-%20Electrochemistry%20(Book%20Solutions).pdf)
+- [Ch 4 — Chemical Kinetics]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%204%20-%20Chemical%20Kinetics%20(Book%20Solutions).pdf)
+- [Ch 5 — Surface Chemistry]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%205%20-%20Surface%20Chemistry%20(Book%20Solutions).pdf)
+- [Ch 6 — Isolation of Elements]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%206%20-%20General%20Principles%20and%20Processes%20of%20Isolation%20of%20Elements%20(Book%20Solutions).pdf)
+- [Ch 7 — The p-Block Elements]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%207%20-%20The%20p-Block%20Elements%20(Book%20Solutions).pdf)
+- [Ch 8 — The d and f Block Elements]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%208%20-%20The%20d%20and%20f%20Block%20Elements%20(Book%20Solutions).pdf)
+- [Ch 9 — Coordination Compounds]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%209%20-%20Coordination%20Compounds%20(Book%20Solutions).pdf)
+- [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2010%20-%20Haloalkanes%20and%20Haloarenes%20(Book%20Solutions).pdf)
+- [Ch 11 — Alcohols, Phenols and Ethers]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2011%20-%20Alcohols%2C%20Phenols%20and%20Ethers%20(Book%20Solutions).pdf)
+- [Ch 12 — Aldehydes, Ketones and Carboxylic Acids]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2012%20-%20Aldehydes%2C%20Ketones%20and%20Carboxylic%20Acids%20(Book%20Solutions).pdf)
+- [Ch 13 — Amines]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2013%20-%20Amines%20(Book%20Solutions).pdf)
+- [Ch 14 — Biomolecules]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2014%20-%20Biomolecules%20(Book%20Solutions).pdf)
+- [Ch 15 — Polymers]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%2015%20-%20Polymers%20(Book%20Solutions).pdf)
+""")
+
+    with st.expander("📝 Notes"):
+        st.markdown(f"""
+- [Ch 1 — The Solid State]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%201%20-%20Free%20PDF.pdf)
+- [Ch 2 — Solutions]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%202%20-%20Free%20PDF.pdf)
+- [Ch 3 — Electrochemistry]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%203%20-%20Free%20PDF.pdf)
+- [Ch 4 — Chemical Kinetics]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%204%20-%20Free%20PDF.pdf)
+- [Ch 5 — Surface Chemistry]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%205%20-%20Free%20PDF.pdf)
+- [Ch 6 — Isolation of Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%206%20-%20Free%20PDF.pdf)
+- [Ch 7 — The p-Block Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF.pdf)
+- [Ch 8 — The d and f Block Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF.pdf)
+- [Ch 9 — Coordination Compounds]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF.pdf)
+- [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF.pdf)
+""")
+
+    with st.expander("⭐ Important Questions"):
+        st.markdown(f"""
+- [Ch 1 — The Solid State]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%201%20-%20Free%20PDF.pdf)
+- [Ch 2 — Solutions]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%202%20-%20Free%20PDF.pdf)
+- [Ch 3 — Electrochemistry]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%203%20-%20Free%20PDF.pdf)
+- [Ch 4 — Chemical Kinetics]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%204%20-%20Free%20PDF.pdf)
+- [Ch 5 — Surface Chemistry]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%205%20-%20Free%20PDF.pdf)
+- [Ch 6 — Isolation of Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%206%20-%20Free%20PDF.pdf)
+- [Ch 7 — The p-Block Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF.pdf)
+- [Ch 8 — The d and f Block Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF.pdf)
+- [Ch 9 — Coordination Compounds]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF.pdf)
+- [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF.pdf)
+""")
+
+    with st.expander("📄 Previous Year Questions (PYQ)"):
+        st.markdown(f"""
+- [2014 Question Paper]({REPO}/PYQ/Previous%20Year%20Chemistry%20Question%20Paper%20for%20CBSE%20Class%2012%20-%202014.pdf)
+- [2015 Question Paper]({REPO}/PYQ/Previous%20Year%20Chemistry%20Question%20Paper%20for%20CBSE%20Class%2012%20-%202015.pdf)
+- [2016 Question Paper (Set 1C)]({REPO}/PYQ/Previous%20Year%20Chemistry%20Question%20Paper%20for%20CBSE%20Class%2012%20-%202016%20Set%201%20C.pdf)
+- [2017 Question Paper]({REPO}/PYQ/CBSE%20Class%2012%202017%20Chemistry%20Question%20Paper%20-%20Free%20PDF.pdf)
+- [2018 Question Paper]({REPO}/PYQ/CBSE%202018%20Chemistry%20Question%20Paper%20Class%2012%20-%20Free%20PDF.pdf)
+- [2019 Question Paper]({REPO}/PYQ/CBSE%202019%20Chemistry%20Question%20Paper%20Class%2012%20-%20Free%20PDF.pdf)
+- [2020 Question Paper]({REPO}/PYQ/CBSE%20Class%2012%20Chemistry%20Question%20Paper%202020.pdf)
+- [2023 Question Paper]({REPO}/PYQ/2023%20-%2056-5-1_Chemistry.pdf)
+- [2024 Question Paper]({REPO}/PYQ/2024%20-%2056_5_1_Chemistry.pdf)
+- [2025 Question Paper with Answers]({REPO}/PYQ/CBSE%20Class%2012%20Chemistry%20Question%20Paper%202025%20Set%201%20PDF%20with%20Answers.pdf)
+- [2026 Question Paper]({REPO}/PYQ/QP2026.pdf)
+""")
+
     st.divider()
     st.markdown("**💡 Try asking:**")
     st.markdown("""
