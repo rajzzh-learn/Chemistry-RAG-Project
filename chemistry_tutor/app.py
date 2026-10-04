@@ -132,6 +132,12 @@ with st.sidebar:
 - [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF.pdf)
 """)
 
+    with st.expander("🧠 Competency Based Questions"):
+        st.markdown(f"""
+- [Competency Based Questions — Vol 1 (2023)]({REPO}/Competency%20Based%20Questions/Chemistry_G12_Vol1_2023.pdf)
+- [Competency Based Questions — Vol 2]({REPO}/Competency%20Based%20Questions/Chemistry_12Vol2.pdf)
+""")
+
     with st.expander("📄 Previous Year Questions (PYQ)"):
         st.markdown(f"""
 - [2014 Question Paper]({REPO}/PYQ/Previous%20Year%20Chemistry%20Question%20Paper%20for%20CBSE%20Class%2012%20-%202014.pdf)

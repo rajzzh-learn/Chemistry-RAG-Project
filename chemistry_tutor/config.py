@@ -29,6 +29,7 @@ PDF_DIRS = [
     BASE_DIR / "Notes",
     BASE_DIR / "Exemplar",
     BASE_DIR / "Important Questions",
+    BASE_DIR / "Competency Based Questions",
     BASE_DIR / "PYQ",
     BASE_DIR / "Book" / "lech1dd",
     BASE_DIR / "Book" / "lech2dd",
