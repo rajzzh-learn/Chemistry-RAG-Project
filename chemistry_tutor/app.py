@@ -161,6 +161,11 @@ with st.sidebar:
 - [2026 Question Paper]({REPO}/PYQ/QP2026.pdf)
 """)
 
+    with st.expander("🏫 SSM Test Question Papers"):
+        st.markdown(f"""
+- [SSM School Chemistry Test]({REPO}/SSM%20Questions/SSM%20School%20Chemistry%20Test.pdf)
+""")
+
     st.divider()
     st.markdown("**💡 Try asking:**")
     st.markdown("""
@@ -386,7 +391,7 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                     with st.expander("📎 Sources from your study material", expanded=False):
                         seen = set()
                         for doc in sources:
-                            src = doc.metadata.get("source", "Unknown")
+                            src = doc.metadata.get("source_label") or doc.metadata.get("source", "Unknown")
                             page = doc.metadata.get("page", "?")
                             label = f"{src}  — page {page}"
                             if label not in seen:

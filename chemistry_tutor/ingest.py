@@ -2,6 +2,11 @@
 PDF ingestion pipeline for Chemistry Tutor.
 Loads all PDFs from configured directories, splits them into chunks,
 and persists a ChromaDB vector store for retrieval.
+
+Directory → human-readable label mapping (SOURCE_LABELS):
+Any PDF loaded from a directory listed here will have a ``source_label``
+metadata field set to the mapped value, making it easy to display a
+friendly name in the UI instead of a raw file path.
 """
 import logging
 from pathlib import Path
@@ -24,6 +29,7 @@ from chemistry_tutor.config import (
     EMBEDDING_MODEL,
     CHUNK_SIZE,
     CHUNK_OVERLAP,
+    SOURCE_LABELS,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
@@ -31,16 +37,25 @@ logger = logging.getLogger(__name__)
 
 
 def load_pdfs(pdf_dirs: list[Path]) -> list:
-    """Load every PDF found under the given directories."""
+    """Load every PDF found under the given directories.
+
+    If a directory has an entry in SOURCE_LABELS, every document loaded
+    from it receives a ``source_label`` metadata field with the mapped value.
+    """
     docs = []
     for directory in pdf_dirs:
         if not directory.exists():
             logger.warning("Directory not found, skipping: %s", directory)
             continue
+        label = SOURCE_LABELS.get(directory)
         for pdf_path in sorted(directory.glob("*.pdf")):
             logger.info("Loading: %s", pdf_path.name)
             loader = PyPDFLoader(str(pdf_path))
-            docs.extend(loader.load())
+            pages = loader.load()
+            if label:
+                for doc in pages:
+                    doc.metadata["source_label"] = label
+            docs.extend(pages)
     logger.info("Total pages loaded: %d", len(docs))
     return docs
 

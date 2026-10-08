@@ -31,10 +31,17 @@ PDF_DIRS = [
     BASE_DIR / "Important Questions",
     BASE_DIR / "Competency Based Questions",
     BASE_DIR / "PYQ",
+    BASE_DIR / "SSM Questions",
     BASE_DIR / "Book" / "lech1dd",
     BASE_DIR / "Book" / "lech2dd",
 ]
 VECTOR_STORE_DIR = BASE_DIR / "chemistry_tutor" / "vectorstore"
+
+# Human-readable labels applied as ``source_label`` metadata during ingestion.
+# Only directories that need a custom display name need an entry here.
+SOURCE_LABELS: dict = {
+    BASE_DIR / "SSM Questions": "SSM Test Question Papers",
+}
 
 # ── Embedding & LLM ────────────────────────────────────────────────────────
 EMBEDDING_MODEL = get_config("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
