@@ -161,6 +161,20 @@ with st.sidebar:
 - [2026 Question Paper]({REPO}/PYQ/QP2026.pdf)
 """)
 
+    with st.expander("📗 NCERT Solutions"):
+        st.markdown(f"""
+- [Ch 1 — Solutions]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%201%20Solutions.pdf)
+- [Ch 2 — Electrochemistry]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%202%20Electrochemistry.pdf)
+- [Ch 3 — Chemical Kinetics]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%203%20Chemical%20Kinetics.pdf)
+- [Ch 4 — The d and f Block Elements]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%204%20The%20D%20And%20F%20Block%20Elements.pdf)
+- [Ch 5 — Coordination Chemistry]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%205%20Coordination%20Chemistry.pdf)
+- [Ch 6 — Haloalkanes and Haloarenes]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%206%20Haloalkanes%20And%20Haloarenes.pdf)
+- [Ch 7 — Alcohols, Phenols and Ethers]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%207%20Alcohol%20Phenol%20And%20Ether.pdf)
+- [Ch 8 — Aldehydes, Ketones and Carboxylic Acids]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%208%20Aldehydes%20Ketones%20And%20Carboxylic%20Acids.pdf)
+- [Ch 9 — Amines]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%209%20Amines.pdf)
+- [Ch 10 — Biomolecules]({REPO}/Ncert%20Solutions/Class%2012%20Chemistry%20Chapter%2010%20Biomolecules.pdf)
+""")
+
     with st.expander("🏫 SSM Test Question Papers"):
         st.markdown(f"""
 - [SSM School Chemistry Test]({REPO}/SSM%20Questions/SSM%20School%20Chemistry%20Test.pdf)

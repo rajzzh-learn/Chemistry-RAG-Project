@@ -32,6 +32,7 @@ PDF_DIRS = [
     BASE_DIR / "Competency Based Questions",
     BASE_DIR / "PYQ",
     BASE_DIR / "SSM Questions",
+    BASE_DIR / "Ncert Solutions",
     BASE_DIR / "Book" / "lech1dd",
     BASE_DIR / "Book" / "lech2dd",
 ]
@@ -41,6 +42,7 @@ VECTOR_STORE_DIR = BASE_DIR / "chemistry_tutor" / "vectorstore"
 # Only directories that need a custom display name need an entry here.
 SOURCE_LABELS: dict = {
     BASE_DIR / "SSM Questions": "SSM Test Question Papers",
+    BASE_DIR / "Ncert Solutions": "NCERT Solutions",
 }
 
 # ── Embedding & LLM ────────────────────────────────────────────────────────
