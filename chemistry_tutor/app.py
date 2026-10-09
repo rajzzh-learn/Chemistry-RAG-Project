@@ -121,9 +121,13 @@ with st.sidebar:
 - [Ch 5 — Surface Chemistry]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%205%20-%20Free%20PDF.pdf)
 - [Ch 6 — Isolation of Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%206%20-%20Free%20PDF.pdf)
 - [Ch 7 — The p-Block Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF.pdf)
+- [Ch 7 — The p-Block Elements (Set 2)]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF%202.pdf)
 - [Ch 8 — The d and f Block Elements]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF.pdf)
+- [Ch 8 — The d and f Block Elements (Set 2)]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF%202.pdf)
 - [Ch 9 — Coordination Compounds]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF.pdf)
+- [Ch 9 — Coordination Compounds (Set 2)]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF%202.pdf)
 - [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF.pdf)
+- [Ch 10 — Haloalkanes and Haloarenes (Set 2)]({REPO}/Notes/CBSE%20Notes%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF%202.pdf)
 """)
 
     with st.expander("⭐ Important Questions"):
@@ -135,9 +139,13 @@ with st.sidebar:
 - [Ch 5 — Surface Chemistry]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%205%20-%20Free%20PDF.pdf)
 - [Ch 6 — Isolation of Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%206%20-%20Free%20PDF.pdf)
 - [Ch 7 — The p-Block Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF.pdf)
+- [Ch 7 — The p-Block Elements (Set 2)]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%207%20-%20Free%20PDF%202.pdf)
 - [Ch 8 — The d and f Block Elements]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF.pdf)
+- [Ch 8 — The d and f Block Elements (Set 2)]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%208%20-%20Free%20PDF%202.pdf)
 - [Ch 9 — Coordination Compounds]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF.pdf)
+- [Ch 9 — Coordination Compounds (Set 2)]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%209%20-%20Free%20PDF%202.pdf)
 - [Ch 10 — Haloalkanes and Haloarenes]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF.pdf)
+- [Ch 10 — Haloalkanes and Haloarenes (Set 2)]({REPO}/Important%20Questions/Important%20Questions%20Class%2012%20Chemistry%20Chapter%2010%20-%20Free%20PDF%202.pdf)
 """)
 
     with st.expander("🧠 Competency Based Questions"):
