@@ -3,6 +3,7 @@ Utility helpers for processing file attachments uploaded via the Streamlit UI.
 
 Supported attachment types:
   - PDF  -> extracted plain text via pypdf
+  - DOCX -> extracted plain text via python-docx
   - TXT  -> raw decoded text
   - Image (PNG / JPG / JPEG / WEBP / GIF) -> base64-encoded data URI for vision LLMs
 """
@@ -23,6 +24,22 @@ def extract_text_from_pdf(file_bytes: bytes, max_chars: int = 6000) -> str:
         full_text = full_text[:max_chars] + f"\n\n[truncated at {max_chars} chars]"
     return full_text
 
+# -- DOCX extraction --------------------------------------------------------
+
+def extract_text_from_docx(file_bytes: bytes, max_chars: int = 6000) -> str:
+    from docx import Document
+    doc = Document(io.BytesIO(file_bytes))
+    parts = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
+    for table in doc.tables:
+        for row in table.rows:
+            cells = [c.text.strip() for c in row.cells]
+            if any(cells):
+                parts.append(" | ".join(cells))
+    full_text = "\n".join(parts)
+    if len(full_text) > max_chars:
+        full_text = full_text[:max_chars] + f"\n\n[truncated at {max_chars} chars]"
+    return full_text
+
 # -- Plain-text extraction --------------------------------------------------
 
 def extract_text_from_txt(file_bytes: bytes, max_chars: int = 6000) -> str:
@@ -37,7 +54,7 @@ _MIME_MAP = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg",
              "webp": "image/webp", "gif": "image/gif"}
 
 SUPPORTED_IMAGE_EXTS = set(_MIME_MAP.keys())
-SUPPORTED_DOC_EXTS   = {"pdf", "txt"}
+SUPPORTED_DOC_EXTS   = {"pdf", "txt", "docx"}
 SUPPORTED_EXTS       = SUPPORTED_IMAGE_EXTS | SUPPORTED_DOC_EXTS
 
 def image_to_base64_uri(file_bytes: bytes, filename: str) -> Tuple[str, str]:

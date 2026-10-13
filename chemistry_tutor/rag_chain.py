@@ -41,6 +41,7 @@ Guidelines:
 - Flag frequently repeated board exam questions, named reactions, and conversion series.
 - Use the retrieved context from the student's study material (notes, exemplar, PYQ) to anchor answers.
 - For IUPAC nomenclature and distinction tests, follow strictly NCERT conventions.
+- Formatting: write chemical formulas and equations in plain Unicode (e.g. CH₃CHO + NH₃ → CH₃CH=NH + H₂O). Never use \\ce{{...}}, mhchem, or HTML tags such as <br>; use Markdown line breaks, lists and tables instead.
 
 Context from study material:
 {context}"""

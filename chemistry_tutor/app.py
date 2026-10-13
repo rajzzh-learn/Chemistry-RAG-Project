@@ -14,8 +14,10 @@ import streamlit as st
 from chemistry_tutor.config import get_config
 from chemistry_tutor.ingest import build_vector_store
 from chemistry_tutor.rag_chain import build_rag_chain, convert_history
+from chemistry_tutor.formatting import clean_answer
 from chemistry_tutor.file_utils import (
     extract_text_from_pdf,
+    extract_text_from_docx,
     extract_text_from_txt,
     image_to_base64_uri,
     is_image,
@@ -253,7 +255,7 @@ for msg in st.session_state["messages"]:
                         st.image(msg["attachment_preview"], use_container_width=True)
                     else:
                         st.text(msg["attachment_preview"][:2000])
-        st.markdown(msg["content"])
+        st.markdown(clean_answer(msg["content"]) if msg["role"] == "assistant" else msg["content"])
 
 
 # ── Helper: call vision-capable LLM directly (image path) ──────────────
@@ -311,7 +313,7 @@ with col_upload:
         f"📎 Attach a file — {ext_list}",
         type=list(SUPPORTED_EXTS),
         label_visibility="visible",
-        help="Attach an image (diagram / question screenshot), PDF, or .txt file.",
+        help="Attach an image (diagram / question screenshot), PDF, Word (.docx), or .txt file.",
     )
 with col_paste:
     paste_result = paste_image_button(
@@ -347,6 +349,9 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
             attachment_is_image = True
         elif attachment_name.lower().endswith(".pdf"):
             attachment_text = extract_text_from_pdf(file_bytes)
+            attachment_preview = attachment_text
+        elif attachment_name.lower().endswith(".docx"):
+            attachment_text = extract_text_from_docx(file_bytes)
             attachment_preview = attachment_text
         else:
             attachment_text = extract_text_from_txt(file_bytes)
@@ -407,6 +412,7 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                     answer = result["answer"]
                     sources = result.get("source_documents", [])
 
+                answer = clean_answer(answer)
                 st.markdown(answer)
 
                 if sources:
@@ -427,7 +433,11 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                 provider = get_config("LLM_PROVIDER", "openai").lower()
                 if "rate_limit" in err_msg.lower() or "quota" in err_msg.lower() or "429" in err_msg:
                     if provider == "groq":
-                        st.warning("⚠️ **Groq Rate Limit**: Please wait ~10-15 seconds and try again.")
+                        st.warning(
+                            "⚠️ **Groq Rate Limit**: If this is a per-minute request limit, wait ~10-15 seconds and retry. "
+                            "If it says the request is too large (tokens per minute), shorten the request or start a new chat.\n\n"
+                            f"Details: `{err_msg[:400]}`"
+                        )
                     else:
                         st.error(
                             "⚠️ **OpenAI Quota / Rate Limit Exceeded**: Check billing on "

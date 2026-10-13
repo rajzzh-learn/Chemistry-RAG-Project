@@ -17,6 +17,7 @@ chromadb==1.5.9
 
 # PDF loading
 pypdf==5.4.0
+python-docx==1.2.0
 cryptography>=50.0.0
 
 # Embeddings — pin to 3.x to avoid torch device NotImplementedError on Streamlit Cloud
