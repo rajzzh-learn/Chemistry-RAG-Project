@@ -95,6 +95,11 @@ with st.sidebar:
 - [Practice Sets]({REPO}/Book/lech2dd/lech2ps.pdf)
 """)
 
+    with st.expander("🏆 CBSE Question Bank"):
+        st.markdown(f"""
+- [Official CBSE Chemistry Question Bank (Class XII)]({REPO}/CBSEQuestionBank/QuestionBankChemistryXII.pdf)
+""")
+
     with st.expander("🔬 Exemplar"):
         st.markdown(f"""
 - [Ch 1 — The Solid State]({REPO}/Exemplar/NCERT%20Exemplar%20for%20Class%2012%20Chemistry%20Chapter%201%20-%20The%20Solid%20State%20(Book%20Solutions).pdf)

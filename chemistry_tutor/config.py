@@ -35,6 +35,7 @@ PDF_DIRS = [
     BASE_DIR / "Ncert Solutions",
     BASE_DIR / "Book" / "lech1dd",
     BASE_DIR / "Book" / "lech2dd",
+    BASE_DIR / "CBSEQuestionBank",
 ]
 VECTOR_STORE_DIR = BASE_DIR / "chemistry_tutor" / "vectorstore"
 
@@ -43,6 +44,7 @@ VECTOR_STORE_DIR = BASE_DIR / "chemistry_tutor" / "vectorstore"
 SOURCE_LABELS: dict = {
     BASE_DIR / "SSM Questions": "SSM Test Question Papers",
     BASE_DIR / "Ncert Solutions": "NCERT Solutions",
+    BASE_DIR / "CBSEQuestionBank": "CBSE Official Question Bank",
 }
 
 # ── Embedding & LLM ────────────────────────────────────────────────────────
