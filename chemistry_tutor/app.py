@@ -13,7 +13,7 @@ if str(ROOT_DIR) not in sys.path:
 import streamlit as st
 from chemistry_tutor.config import get_config
 from chemistry_tutor.ingest import build_vector_store
-from chemistry_tutor.rag_chain import build_rag_chain, convert_history
+from chemistry_tutor.rag_chain import build_rag_chain, convert_history, invoke_with_retry
 from chemistry_tutor.formatting import clean_answer
 from chemistry_tutor.file_utils import (
     extract_text_from_pdf,
@@ -447,6 +447,10 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
 
             except Exception as e:
                 err_msg = str(e)
+                if "collection" in err_msg.lower() and "does not exist" in err_msg.lower():
+                    st.session_state["vector_store"] = build_vector_store(force_rebuild=False)
+                    st.session_state["rag_chain"] = build_rag_chain(st.session_state["vector_store"])
+                    st.rerun()
                 provider = get_config("LLM_PROVIDER", "openai").lower()
                 if "rate_limit" in err_msg.lower() or "quota" in err_msg.lower() or "429" in err_msg:
                     if provider == "groq":
