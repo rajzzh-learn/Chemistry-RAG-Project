@@ -24,6 +24,7 @@ from chemistry_tutor.file_utils import (
     SUPPORTED_EXTS,
 )
 from chemistry_tutor.components.paste_button import paste_image_button
+from shared_tutor.validator import validate_answer
 
 # ── Page config ────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -310,7 +311,7 @@ def _ask_vision_llm(question: str, image_data_uris: list[str], context_text: str
 
     client = genai.Client(api_key=google_key)
     response = client.models.generate_content(
-        model="gemini-3.5-flash-lite",
+        model="gemini-2.0-flash-lite",
         contents=[prompt, *image_parts],
     )
     return response.text
@@ -393,9 +394,8 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking …"):
+            # Pass full history — convert_history manages the token budget automatically
             recent_messages = st.session_state["messages"][:-1]
-            if len(recent_messages) > 4:
-                recent_messages = recent_messages[-4:]
             clean_history = [{"role": m["role"], "content": m["content"]} for m in recent_messages]
             chat_history = convert_history(clean_history)
 
@@ -417,19 +417,35 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                     sources = source_docs
                 elif docs_block:
                     augmented = f"{user_input}{docs_block}"
-                    result = st.session_state["rag_chain"].invoke(
+                    result = invoke_with_retry(lambda: st.session_state["rag_chain"].invoke(
                         {"question": augmented, "chat_history": chat_history}
-                    )
+                    ))
                     answer = result["answer"]
                     sources = result.get("source_documents", [])
                 else:
-                    result = st.session_state["rag_chain"].invoke(
+                    result = invoke_with_retry(lambda: st.session_state["rag_chain"].invoke(
                         {"question": user_input, "chat_history": chat_history}
-                    )
+                    ))
                     answer = result["answer"]
                     sources = result.get("source_documents", [])
 
-                answer = clean_answer(answer)
+                # ── Layer 3: Gemini validation ─────────────────────────────
+                context_for_validation = "\n\n".join(
+                    d.page_content for d in sources[:4]
+                ) if sources else ""
+                validation = validate_answer(
+                    subject="Chemistry",
+                    question=user_input,
+                    context=context_for_validation,
+                    answer=answer,
+                )
+                answer = clean_answer(validation.answer)
+                if validation.status == "corrected":
+                    st.warning("⚠️ **Answer corrected by Gemini validator**")
+                    for c in validation.corrections:
+                        st.caption(f"• {c}")
+                elif validation.status == "verified":
+                    st.success("✅ Answer verified")
                 st.markdown(answer)
 
                 if sources:
