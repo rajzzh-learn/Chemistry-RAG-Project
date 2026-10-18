@@ -24,7 +24,7 @@ from chemistry_tutor.file_utils import (
     SUPPORTED_EXTS,
 )
 from chemistry_tutor.components.paste_button import paste_image_button
-from shared_tutor.validator import validate_answer
+from shared_tutor.validator import validate_answer, show_validation_badge
 
 # ── Page config ────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -429,9 +429,9 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                     answer = result["answer"]
                     sources = result.get("source_documents", [])
 
-                # ── Layer 3: Gemini validation ─────────────────────────────
+                # ── Layer 3: multi-LLM validation ─────────────────────────────
                 context_for_validation = "\n\n".join(
-                    d.page_content for d in sources[:4]
+                    d.page_content for d in sources
                 ) if sources else ""
                 validation = validate_answer(
                     subject="Chemistry",
@@ -440,12 +440,7 @@ if user_input := st.chat_input("Ask your Chemistry teacher …"):
                     answer=answer,
                 )
                 answer = clean_answer(validation.answer)
-                if validation.status == "corrected":
-                    st.warning("⚠️ **Answer corrected by Gemini validator**")
-                    for c in validation.corrections:
-                        st.caption(f"• {c}")
-                elif validation.status == "verified":
-                    st.success("✅ Answer verified")
+                show_validation_badge(validation)
                 st.markdown(answer)
 
                 if sources:
